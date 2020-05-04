@@ -5,6 +5,11 @@ using UnityEngine;
 public class SimpleCarController : MonoBehaviour
 {
 
+	public void Start()
+	{
+		getObjects();
+	}
+
 	public void GetInput()
 	{
 		m_horizontalInput = Input.GetAxis("Horizontal");
@@ -22,6 +27,7 @@ public class SimpleCarController : MonoBehaviour
 	{
 		frontDriverW.motorTorque = m_verticalInput * motorForce;
 		frontPassengerW.motorTorque = m_verticalInput * motorForce;
+		KPH = rigidbody.velocity.magnitude * 3.6f;
 	}
 
 	private void UpdateWheelPoses()
@@ -51,9 +57,16 @@ public class SimpleCarController : MonoBehaviour
 		UpdateWheelPoses();
 	}
 
+	private void getObjects()
+	{
+		rigidbody = GetComponent<Rigidbody>();
+	}
+
 	private float m_horizontalInput;
 	private float m_verticalInput;
 	private float m_steeringAngle;
+	private Rigidbody rigidbody;
+	public float KPH;
 
 	public WheelCollider frontDriverW, frontPassengerW;
 	public WheelCollider rearDriverW, rearPassengerW;

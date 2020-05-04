@@ -5,7 +5,9 @@ using System.Collections.Generic;
 [AddComponentMenu("Camera-Control/Smooth Mouse Look")]
 public class SmoothMouseLook : MonoBehaviour
 {
-
+	//private GameObject Player;
+	//private SimpleCarController RR;
+	//public float speed;
 	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 	public RotationAxes axes = RotationAxes.MouseXAndY;
 	public float sensitivityX = 15F;
@@ -143,5 +145,10 @@ public class SmoothMouseLook : MonoBehaviour
 			}
 		}
 		return Mathf.Clamp(angle, min, max);
+	}
+
+	private void FixedUpdate()
+	{
+		
 	}
 }
